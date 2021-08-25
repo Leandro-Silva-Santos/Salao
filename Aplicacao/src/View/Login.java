@@ -5,7 +5,10 @@
  */
 package View;
 
+import Controller.LoginController;
+import Model.DAO.Banco;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -13,12 +16,15 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
+    private final LoginController controller;
+
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
-        controller = new LoginController();
+        controller = new LoginController(this);
+        Banco.inicia();
     }
 
     /**
@@ -114,7 +120,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnentrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnentrarActionPerformed
-        controller.fizTarefa();
+        this.controller.entrarNoSistema();
     }//GEN-LAST:event_btnentrarActionPerformed
 
     private void txtusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusuarioActionPerformed
@@ -172,4 +178,23 @@ public class Login extends javax.swing.JFrame {
     public void exibeMensagem(String mensagem) {
         JOptionPane.showMessageDialog(null, mensagem);
     }
+
+    public JTextField getTxtsenha() {
+        return txtsenha;
+    }
+
+    public void setTxtsenha(JTextField txtsenha) {
+        this.txtsenha = txtsenha;
+    }
+
+    public JTextField getTxtusuario() {
+        return txtusuario;
+    }
+
+    public void setTxtusuario(JTextField txtusuario) {
+        this.txtusuario = txtusuario;
+    }
+
+    
+    
 }
