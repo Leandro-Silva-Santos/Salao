@@ -3,7 +3,7 @@ package Controller.Helper;
 import Model.Usuario;
 import View.Login;
 
-public class LoginHelper {
+public class LoginHelper implements IHelper{
     
     private final Login view;
 
@@ -29,5 +29,10 @@ public class LoginHelper {
     public void limparCampos(){
         view.getTxtusuario().setText("");
         view.getTxtsenha().setText("");
+    }
+
+    @Override
+    public void limpar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

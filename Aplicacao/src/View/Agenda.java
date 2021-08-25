@@ -8,6 +8,8 @@ package View;
 import Controller.AgendaController;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -24,7 +26,6 @@ public class Agenda extends javax.swing.JFrame {
         initComponents();
         controller = new AgendaController(this);
         iniciar();
-        
     }
 
     /**
@@ -82,6 +83,12 @@ public class Agenda extends javax.swing.JFrame {
         cbcliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbclienteActionPerformed(evt);
+            }
+        });
+
+        cdservico.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cdservicoItemStateChanged(evt);
             }
         });
 
@@ -208,8 +215,12 @@ public class Agenda extends javax.swing.JFrame {
     }//GEN-LAST:event_cbclienteActionPerformed
 
     private void btnagendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagendarActionPerformed
-        // TODO add your handling code here:
+        this.controller.agendar();
     }//GEN-LAST:event_btnagendarActionPerformed
+
+    private void cdservicoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cdservicoItemStateChanged
+        this.controller.atualizaValor();
+    }//GEN-LAST:event_cdservicoItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -272,6 +283,7 @@ public class Agenda extends javax.swing.JFrame {
         this.controller.atualizaTabela();
         this.controller.atualizaCliente();
         this.controller.atualizaServico();
+        this.controller.atualizaValor();
     }
 
     public JTable getTblagenda() {
@@ -296,6 +308,46 @@ public class Agenda extends javax.swing.JFrame {
 
     public void setCdservico(JComboBox<String> cdservico) {
         this.cdservico = cdservico;
+    }
+
+    public JTextField getTxtvalor() {
+        return txtvalor;
+    }
+
+    public void setTxtvalor(JTextField txtvalor) {
+        this.txtvalor = txtvalor;
+    }
+
+    public JTextField getTxtid() {
+        return txtid;
+    }
+
+    public void setTxtid(JTextField txtid) {
+        this.txtid = txtid;
+    }
+
+    public JTextArea getTaobservacao() {
+        return taobservacao;
+    }
+
+    public void setTaobservacao(JTextArea taobservacao) {
+        this.taobservacao = taobservacao;
+    }
+
+    public JTextField getTxtdata() {
+        return txtdata;
+    }
+
+    public void setTxtdata(JTextField txtdata) {
+        this.txtdata = txtdata;
+    }
+
+    public JTextField getTxthora() {
+        return txthora;
+    }
+
+    public void setTxthora(JTextField txthora) {
+        this.txthora = txthora;
     }
     
     

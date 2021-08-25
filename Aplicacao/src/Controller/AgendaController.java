@@ -7,6 +7,7 @@ import Model.DAO.AgendamentoDAO;
 import Model.DAO.ClienteDAO;
 import Model.DAO.ServicoDAO;
 import Model.Servico;
+import Servico.Correio;
 import View.Agenda;
 import java.util.ArrayList;
 
@@ -39,5 +40,23 @@ public class AgendaController {
         ArrayList<Servico> servicos = servicoDAO.selectAll();
         
         helper.preencherServicos(servicos);
+    }
+    
+    public void atualizaValor(){
+        Servico servico = helper.obterServico();
+        helper.setarValor(servico.getValor());
+    }
+    
+    public void agendar(){
+        
+        Agendamento agendamento = helper.obterModelo();
+        
+        new AgendamentoDAO().insert(agendamento);
+        
+        atualizaTabela();
+        helper.limpar();
+        
+        Correio correio = new Correio();
+        correio.notificarPorEmail(agendamento);
     }
 }
